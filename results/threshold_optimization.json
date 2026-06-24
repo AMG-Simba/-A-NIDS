@@ -1,0 +1,56 @@
+{
+  "model_name": "Hist Gradient Boosting",
+  "default": {
+    "threshold": 0.5,
+    "accuracy": 0.8133871540099361,
+    "precision": 0.9688043478260869,
+    "recall": 0.6945375204550768,
+    "f1_score": 0.80905913856488,
+    "confusion_matrix": [
+      [
+        9424,
+        287
+      ],
+      [
+        3920,
+        8913
+      ]
+    ]
+  },
+  "optimal": {
+    "threshold": 0.05,
+    "accuracy": 0.8459457061745919,
+    "precision": 0.9686561185659924,
+    "recall": 0.753759837917868,
+    "f1_score": 0.8478022700381261,
+    "confusion_matrix": [
+      [
+        9398,
+        313
+      ],
+      [
+        3160,
+        9673
+      ]
+    ]
+  },
+  "security": {
+    "threshold": 0.05,
+    "accuracy": 0.8459457061745919,
+    "precision": 0.9686561185659924,
+    "recall": 0.753759837917868,
+    "f1_score": 0.8478022700381261,
+    "confusion_matrix": [
+      [
+        9398,
+        313
+      ],
+      [
+        3160,
+        9673
+      ]
+    ]
+  },
+  "optimal_threshold": 0.05,
+  "security_threshold": 0.05
+}

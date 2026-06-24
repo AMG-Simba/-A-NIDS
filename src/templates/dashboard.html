@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-NIDS — Dashboard Agent IA</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="logo">
+    <span class="shield">🛡</span>
+    <div>
+      <h1>A-NIDS Dashboard</h1>
+      <span class="sub">Agent IA de détection d'intrusion — dataset réel NSL-KDD</span>
+    </div>
+  </div>
+  <div class="model-badge">
+    <span class="dot"></span>
+    Agent : <strong id="model-name">...</strong> · seuil <strong id="threshold">...</strong>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- KPIs -->
+  <section class="kpis">
+    <div class="kpi"><div class="kpi-ic">📊</div><div class="kpi-val" id="k-total">0</div><div class="kpi-lbl">Connexions analysées</div></div>
+    <div class="kpi attack"><div class="kpi-ic">🚨</div><div class="kpi-val" id="k-ai-detect">0</div><div class="kpi-lbl">Détectées par l'IA</div></div>
+    <div class="kpi rule"><div class="kpi-ic">📋</div><div class="kpi-val" id="k-rule-detect">0</div><div class="kpi-lbl">Détectées par le Classique</div></div>
+    <div class="kpi blocked"><div class="kpi-ic">🛑</div><div class="kpi-val" id="k-blocked">0</div><div class="kpi-lbl">IPs bloquées</div></div>
+  </section>
+
+  <!-- Comparaison gain -->
+  <section class="card highlight">
+    <h2>⚡ Avantage de l'agent IA en direct</h2>
+    <p class="gain-text">Sur cet échantillon, l'agent IA a détecté <strong id="gain-ai">0</strong> attaques
+    contre <strong id="gain-rule">0</strong> pour le détecteur classique.
+    L'IA a rattrapé <strong id="gain-diff" class="green">0</strong> attaque(s) que les règles fixes ont manquées.</p>
+  </section>
+
+  <!-- Actions -->
+  <section class="card">
+    <h2>🎯 Lancer une analyse</h2>
+    <p class="muted">Tire des connexions réelles du jeu de test NSL-KDD et les fait analyser
+    simultanément par l'agent IA et le détecteur classique.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="simulate(10)">Analyser 10 connexions</button>
+      <button class="btn primary" onclick="simulate(25)">Analyser 25 connexions</button>
+      <button class="btn primary" onclick="simulate(50)">Analyser 50 connexions</button>
+      <button class="btn warning" onclick="reset()">🔄 Réinitialiser</button>
+    </div>
+  </section>
+
+  <!-- Tableau résultats -->
+  <section class="card">
+    <h2>📋 Résultats comparés (IA vs Classique)</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>IP</th><th>Vrai type</th>
+            <th>Agent IA</th><th>Proba</th><th>Niveau</th>
+            <th>Classique</th><th>Verdict</th>
+          </tr>
+        </thead>
+        <tbody id="rows">
+          <tr class="empty"><td colspan="7">Aucune analyse — cliquez sur un bouton ci-dessus</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">A-NIDS — Projet RST · Module IA · ENSA Kénitra</footer>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
